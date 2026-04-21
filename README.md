@@ -12,10 +12,35 @@ You can install the package via Composer:
 composer require --dev gradints/laravel-benchmark-route
 ```
 
+After installing it, you need to register the middleware in your bootstrap/app.php file:
+
+```php
+use Gradin\LaravelBenchmarkRoute\Middleware\BenchmarkMiddleware;
+use Illuminate\Foundation\Application;
+use Illuminate\Foundation\Configuration\Exceptions;
+use Illuminate\Foundation\Configuration\Middleware;
+use Sentry\Laravel\Integration;
+
+return Application::configure(basePath: dirname(__DIR__))
+    ->withRouting(
+        web: __DIR__.'/../routes/web.php',
+        api: __DIR__.'/../routes/api.php',
+        commands: __DIR__.'/../routes/console.php',
+        channels: __DIR__.'/../routes/channels.php',
+        health: '/up',
+        apiPrefix: '',
+    )
+    ->withMiddleware(function (Middleware $middleware): void {
+        // register BenchmarkMiddleware for web and api routes
+        $middleware->web(BenchmarkMiddleware::class);
+        $middleware->api(BenchmarkMiddleware::class);
+    });
+```
+
 ## Usage
 
 ```php
-use App\Attributes\Benchmark;
+use Gradin\LaravelBenchmarkRoute\Attributes\Benchmark;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class ProductController extends Controller
