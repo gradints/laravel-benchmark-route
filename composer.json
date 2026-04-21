@@ -4,8 +4,8 @@
     "type": "laravel-plugin",
     "require": {
         "php": "^8.2",
-        "illuminate/support": ">=10.0 <13.0",
-        "illuminate/http": ">=10.0 <13.0"
+        "illuminate/support": ">=10.0 <14.0",
+        "illuminate/http": ">=10.0 <14.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^13.1",
