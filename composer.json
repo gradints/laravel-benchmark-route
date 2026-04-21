@@ -1,0 +1,26 @@
+{
+    "name": "gradints/laravel-benchmark-route",
+    "description": "Adds elapsed time to controller response",
+    "type": "laravel-plugin",
+    "require": {
+        "php": "^8.2",
+        "illuminate/support": ">=10.0 <13.0",
+        "illuminate/http": ">=10.0 <13.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^13.1",
+        "laravel/pint": "^1.29"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Gradin\\LaravelBenchmarkRoute\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Christhofer",
+            "email": "christhofer@gradin.co.id"
+        }
+    ]
+}

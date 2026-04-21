@@ -1,0 +1,9 @@
+{
+  "recommendations": [
+    "bmewburn.vscode-intelephense-client",
+    "laravel.vscode-laravel",
+    "cjhowe7.laravel-blade",
+    "mikestead.dotenv",
+    "emeraldwalk.runonsave"
+  ]
+}

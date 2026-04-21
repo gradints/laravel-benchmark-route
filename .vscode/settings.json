@@ -1,0 +1,24 @@
+{
+  "intelephense.format.enable": false,
+  "[php]": {
+    "editor.tabSize": 4,
+    "editor.formatOnSave": false,
+  },
+  "[blade]": {
+    "editor.tabSize": 2
+  },
+  "bladeFormatter.format.indentSize": 2,
+  "emeraldwalk.runonsave": {
+    "commands": [
+      {
+        "match": "\\.php$",
+        "cmd": "${workspaceFolder}/vendor/bin/pint ${file}"
+      },
+    ]
+  },
+  // fixes error intelephense unable to resolve method like
+  // $this->route(), $this->input() inside FormRequest
+  "intelephense.files.exclude": [
+    "**/vendor/_laravel_ide/_request.php"
+  ],
+}
