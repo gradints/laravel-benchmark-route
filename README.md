@@ -66,7 +66,7 @@ And the response will be like this:
     // pagination meta data
   },
   "benchmark": {
-    "time": "1.230ms"
+    "time": "1,230.93"
   }
 }
 ```

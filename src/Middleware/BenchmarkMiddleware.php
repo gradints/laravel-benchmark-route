@@ -4,6 +4,7 @@ namespace Gradin\LaravelBenchmarkRoute\Middleware;
 
 use Closure;
 use Gradin\LaravelBenchmarkRoute\Attributes\Benchmark;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Http\Response;
@@ -12,7 +13,7 @@ use ReflectionClass;
 
 class BenchmarkMiddleware
 {
-    public function handle(Request $request, Closure $next): Response
+    public function handle(Request $request, Closure $next): Response|JsonResponse
     {
         $benchmarkStart = microtime(true);
         $benchmarkAttribute = $this->getBenchmarkAttribute($request);
@@ -59,7 +60,7 @@ class BenchmarkMiddleware
         return [App::make($controller), $method];
     }
 
-    private function addBenchmarkToResponse(Response $response, string $benchmarkTime): void
+    private function addBenchmarkToResponse(Response|JsonResponse $response, string $benchmarkTime): void
     {
         if ($response instanceof JsonResource) {
             // If it's a JsonResource, add to additional data
