@@ -31,9 +31,11 @@ return Application::configure(basePath: dirname(__DIR__))
         apiPrefix: '',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        // register BenchmarkMiddleware for web and api routes
-        $middleware->web(BenchmarkMiddleware::class);
-        $middleware->api(BenchmarkMiddleware::class);
+        if (class_exists(BenchmarkMiddleware::class)) {
+            // register BenchmarkMiddleware for web and api routes
+            $middleware->web(BenchmarkMiddleware::class);
+            $middleware->api(BenchmarkMiddleware::class);
+        }
     });
 ```
 
